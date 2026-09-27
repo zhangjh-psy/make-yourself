@@ -56,7 +56,7 @@
 需要 Node.js 18 以上。
 
 ```bash
-git clone https://github.com/zhangji-psy/make-yourself.git
+git clone https://github.com/zhangjh-psy/make-yourself.git
 cd make-yourself
 npm install
 npm start          # 构建并启动

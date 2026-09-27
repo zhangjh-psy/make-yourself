@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "private": true,
   "description": "离线个人工作台：日历待办 + 截止日 + 倒数日 + 日记 + 慎独计时",
-  "author": "ZHANG Junhui (zhangji-psy)",
+  "author": "ZHANG Junhui (zhangjh-psy)",
   "license": "MIT",
   "main": "dist-electron/main.js",
   "scripts": {

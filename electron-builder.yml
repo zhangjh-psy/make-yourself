@@ -2,7 +2,7 @@ appId: com.makeyourself.app
 productName: Make yourself
 # 可执行文件名不能带空格（便携版自解压路径会出问题），所以显示名和 exe 名分开
 executableName: MakeYourself
-copyright: Copyright © 2026 ZHANG Junhui (zhangji-psy)
+copyright: Copyright © 2026 ZHANG Junhui (zhangjh-psy)
 
 directories:
   output: release

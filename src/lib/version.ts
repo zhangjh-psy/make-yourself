@@ -22,7 +22,7 @@ export const AUTHOR = 'ZHANG Junhui';
  * GitHub 仓库，格式 `用户名/仓库名`。
  * 留空 = 还没有公开仓库，设置页不会显示"检查更新"。
  */
-export const GITHUB_REPO = 'zhangji-psy/make-yourself';
+export const GITHUB_REPO = 'zhangjh-psy/make-yourself';
 
 /** Releases 页地址（用来做"检查更新"） */
 export function releasesUrl(): string {
