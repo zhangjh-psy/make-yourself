@@ -1,2 +1,26 @@
-# Auto detect text files and perform LF normalization
+# 让 git 自动识别文本文件并统一换行符
 * text=auto
+
+# ── 明确标记为文本（便于 GitHub 正确统计语言、显示 diff）──
+*.ts   text
+*.tsx  text
+*.css  text
+*.html text
+*.json text
+*.md   text
+*.mjs  text
+*.yml  text
+
+# ── Windows 批处理/PowerShell 必须保持 CRLF ──
+# 如果被换成 LF，cmd.exe 执行 .bat 会出错、PowerShell 也可能读不对
+*.bat  text eol=crlf
+*.ps1  text eol=crlf
+
+# ── 二进制文件：不要做任何换行转换 ──
+*.ico binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.zip binary
+*.exe binary

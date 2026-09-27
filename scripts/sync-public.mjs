@@ -32,6 +32,7 @@ const COPY_FILES = [
   'tsconfig.json',
   'electron-builder.yml',
   '.gitignore',
+  '.gitattributes',
   'README.md',
   'ARCHITECTURE.md',
   'LICENSE',
@@ -148,9 +149,18 @@ console.log(`\n完成：${files.length} 个文件，${(total / 1024).toFixed(1)}
 
 if (fs.existsSync(path.join(DST, '.git'))) {
   try {
+    /*
+     * .npmrc 是"可选但对国内用户有用"的文件：里面写了国内镜像加速。
+     * 源项目的 .gitignore 把它排除了（因为源里那份还带本机缓存路径），
+     * 所以这里用 -f 强制加进暂存区 —— 公开版的内容是上面新写的干净版，
+     * 不含任何本机路径，提交上去没问题。
+     */
+    execSync('git add -f .npmrc', { cwd: DST, encoding: 'utf8' });
+
     const status = execSync('git status --short', { cwd: DST, encoding: 'utf8' }).trim();
     console.log('\ngit 状态（这些就是这次改动的文件）：');
     console.log(status ? status.split('\n').map((l) => `  ${l}`).join('\n') : '  （没有变化）');
+    console.log('\n下一步：打开 GitHub Desktop → 写一句 Summary → Commit to main → Push origin');
   } catch {
     /* git 不可用就算了 */
   }
