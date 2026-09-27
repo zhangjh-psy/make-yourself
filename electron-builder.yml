@@ -1,0 +1,45 @@
+appId: com.makeyourself.app
+productName: Make yourself
+# 可执行文件名不能带空格（便携版自解压路径会出问题），所以显示名和 exe 名分开
+executableName: MakeYourself
+copyright: Copyright © 2026 ZHANG Junhui (zhangji-psy)
+
+directories:
+  output: release
+  buildResources: build
+
+files:
+  - dist/**/*
+  - dist-electron/**/*
+  - package.json
+
+extraResources:
+  - from: build/icon.ico
+    to: build/icon.ico
+  - from: build/icon.32.png
+    to: build/icon.32.png
+
+asar: true
+compression: normal
+win:
+  icon: build/icon.ico
+  target:
+    - target: portable
+      arch:
+        - x64
+  artifactName: MakeYourself-便携版-${version}.${ext}
+
+portable:
+  artifactName: MakeYourself-便携版-${version}.${ext}
+  splashImage: null
+
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: Make yourself
+  installerIcon: build/icon.ico
+  uninstallerIcon: build/icon.ico
+  artifactName: MakeYourself-安装版-${version}.${ext}

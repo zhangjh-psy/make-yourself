@@ -1,0 +1,37 @@
+{
+  "name": "make-yourself",
+  "productName": "Make yourself",
+  "version": "0.0.1",
+  "private": true,
+  "description": "离线个人工作台：日历待办 + 截止日 + 倒数日 + 日记 + 慎独计时",
+  "author": "ZHANG Junhui (zhangji-psy)",
+  "license": "MIT",
+  "main": "dist-electron/main.js",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "icon": "node scripts/make-icon.mjs",
+    "build:renderer": "node scripts/build-renderer.mjs",
+    "build:electron": "esbuild electron/main.ts electron/preload.ts electron/float-preload.ts --bundle --platform=node --format=cjs --external:electron --external:lunar-javascript --outdir=dist-electron",
+    "build": "npm run build:renderer && npm run build:electron",
+    "watch": "node scripts/build-renderer.mjs --watch",
+    "start": "npm run build && electron .",
+    "verify": "node scripts/verify.mjs",
+    "sync:public": "node scripts/sync-public.mjs",
+    "pack": "npm run build && electron-builder --win portable --config electron-builder.yml",
+    "dist": "npm run build && electron-builder --win nsis --config electron-builder.yml"
+  },
+  "dependencies": {
+    "lunar-javascript": "^1.7.7"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "electron": "^44.4.3",
+    "electron-builder": "^26.0.12",
+    "esbuild": "^0.27.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "typescript": "^5.9.2"
+  }
+}
