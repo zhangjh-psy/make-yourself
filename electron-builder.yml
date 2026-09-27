@@ -20,7 +20,17 @@ extraResources:
     to: build/icon.32.png
 
 asar: true
-compression: normal
+# 最高压缩。原因：GitHub Release 单个附件上限 100 MB，
+# 用 normal 打出来的安装包有 106 MB，传不上去。代价只是打包慢一点。
+compression: maximum
+
+# 只保留中文语言包。
+# Electron 自带 55 种语言的翻译文件，加起来约 48 MB，
+# 而这个应用界面只提供中文，其余 54 种纯属白占体积。
+# 以后要做多语言，把 "en-US" 之类的加进来即可。
+electronLanguages:
+  - zh-CN
+  - zh-TW
 win:
   icon: build/icon.ico
   target:
